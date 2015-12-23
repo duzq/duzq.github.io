@@ -5,28 +5,28 @@
   
   <title>gitosis配置 | 技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Git 1.8.2.2 + gitosis
+  <meta name="description" content="Git + gitosis
 1.查看Linux系统服务器系统版本
-12345    cat /etc/redhat-release   # 查看系统版本        CentOS release 6.4 (Final)        ifconfig                 # 查看服务器的IP
+123cat /etc/redhat-release   # 查看系统版本CentOS release 6.4 (Final)ifconfig                 # 查看服务器的IP
 2.在服务器上安装git及做些操作
-12345678910111213141">
+1234567891011121314151617执行命令sudo yum install curl">
 <meta property="og:type" content="article">
 <meta property="og:title" content="gitosis配置">
-<meta property="og:url" content="http://yoursite.com/2015/12/23/gitosis配置/index.html">
+<meta property="og:url" content="http://yoursite.com/2015/07/02/gitosis配置/index.html">
 <meta property="og:site_name" content="技术博客">
-<meta property="og:description" content="Git 1.8.2.2 + gitosis
+<meta property="og:description" content="Git + gitosis
 1.查看Linux系统服务器系统版本
-12345    cat /etc/redhat-release   # 查看系统版本        CentOS release 6.4 (Final)        ifconfig                 # 查看服务器的IP
+123cat /etc/redhat-release   # 查看系统版本CentOS release 6.4 (Final)ifconfig                 # 查看服务器的IP
 2.在服务器上安装git及做些操作
-12345678910111213141">
-<meta property="og:updated_time" content="2015-12-23T12:52:00.000Z">
+1234567891011121314151617执行命令sudo yum install curl">
+<meta property="og:updated_time" content="2015-12-23T14:59:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gitosis配置">
-<meta name="twitter:description" content="Git 1.8.2.2 + gitosis
+<meta name="twitter:description" content="Git + gitosis
 1.查看Linux系统服务器系统版本
-12345    cat /etc/redhat-release   # 查看系统版本        CentOS release 6.4 (Final)        ifconfig                 # 查看服务器的IP
+123cat /etc/redhat-release   # 查看系统版本CentOS release 6.4 (Final)ifconfig                 # 查看服务器的IP
 2.在服务器上安装git及做些操作
-12345678910111213141">
+1234567891011121314151617执行命令sudo yum install curl">
   
     <link rel="alternative" href="/atom.xml" title="技术博客" type="application/atom+xml">
   
@@ -74,8 +74,8 @@
       <div class="outer">
         <section id="main"><article id="post-gitosis配置" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/12/23/gitosis配置/" class="article-date">
-  <time datetime="2015-12-23T07:26:47.000Z" itemprop="datePublished">2015-12-23</time>
+    <a href="/2015/07/02/gitosis配置/" class="article-date">
+  <time datetime="2015-07-02T07:26:47.000Z" itemprop="datePublished">2015-07-02</time>
 </a>
     
   </div>
@@ -94,9 +94,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Git 1.8.2.2 + gitosis</p>
+        <p>Git + gitosis</p>
 <p>1.查看Linux系统服务器系统版本</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    cat /etc/redhat-release   <span class="preprocessor"># 查看系统版本</span></span><br><span class="line">    </span><br><span class="line">    CentOS release <span class="number">6.4</span> (Final)</span><br><span class="line">    </span><br><span class="line">    ifconfig                 <span class="preprocessor"># 查看服务器的IP</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/redhat-release   <span class="preprocessor"># 查看系统版本</span></span><br><span class="line">CentOS release <span class="number">6.4</span> (Final)</span><br><span class="line">ifconfig                 <span class="preprocessor"># 查看服务器的IP</span></span><br></pre></td></tr></table></figure>
 <p>2.在服务器上安装git及做些操作</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">执行命令</span><br><span class="line">sudo yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel perl-devel</span><br><span class="line"></span><br><span class="line">同时下载git-<span class="number">1.8</span><span class="number">.2</span><span class="number">.2</span>.tar.gz文件</span><br><span class="line"></span><br><span class="line">然后将其mv 到/usr/local/src</span><br><span class="line"></span><br><span class="line">cd /usr/local/src</span><br><span class="line">sudo tar -zvxf git-<span class="number">1.8</span><span class="number">.2</span><span class="number">.2</span>.tar.gz</span><br><span class="line">cd git-<span class="number">1.8</span><span class="number">.2</span><span class="number">.2</span></span><br><span class="line"></span><br><span class="line">sudo make prefix=/usr/local/git all</span><br><span class="line">sudo make prefix=/usr/local/git install</span><br><span class="line"></span><br><span class="line">增加软连接</span><br><span class="line">sudo ln -s /usr/local/git/bin<span class="comment">/* /usr/bin/</span><br><span class="line">git --version   // 如果能显示版本号，即表示成功</span></span><br></pre></td></tr></table></figure>
 <p>3.在服务器安装gitosis</p>
@@ -116,7 +116,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/23/gitosis配置/" data-id="ciiitx1ti0000n3ccxpa3cv77" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/07/02/gitosis配置/" data-id="ciiiybpuz000039ccjos4j66d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -125,15 +125,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/12/23/hexo-github配置/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          hexo-github配置
-        
-      </div>
-    </a>
   
+    <a href="/2015/06/23/hexo-github配置/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">hexo-github配置</div>
+    </a>
   
 </nav>
 
@@ -154,7 +150,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -166,11 +162,11 @@
       <ul>
         
           <li>
-            <a href="/2015/12/23/hexo-github配置/">hexo-github配置</a>
+            <a href="/2015/07/02/gitosis配置/">gitosis配置</a>
           </li>
         
           <li>
-            <a href="/2015/12/23/gitosis配置/">gitosis配置</a>
+            <a href="/2015/06/23/hexo-github配置/">hexo-github配置</a>
           </li>
         
       </ul>
