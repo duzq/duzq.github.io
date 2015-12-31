@@ -19,7 +19,7 @@
 123cat /etc/redhat-release   # 查看系统版本CentOS release 6.4 (Final)ifconfig                 # 查看服务器的IP
 2.在服务器上安装git及做些操作
 1234567891011121314151617执行命令sudo yum install curl">
-<meta property="og:updated_time" content="2015-12-23T14:59:48.000Z">
+<meta property="og:updated_time" content="2015-12-24T03:18:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gitosis配置">
 <meta name="twitter:description" content="Git + gitosis
@@ -108,7 +108,7 @@
 <p>6.在个人开发机上导出项目管理</p>
 <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /repo</span><br><span class="line">cd /repo</span><br><span class="line">git clone git<span class="variable">@125</span>.<span class="number">28.5</span>.<span class="number">62</span><span class="symbol">:gitosis-admin</span>.git</span><br></pre></td></tr></table></figure>
 <p>7.在个人开发机增加及设置管理项目</p>
-<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">cd /repo/gitosis-admin</span><br><span class="line"></span><br><span class="line">查看git服务器已经上传密钥</span><br><span class="line"><span class="keyword">ls</span> keydir  </span><br><span class="line"></span><br><span class="line">cat keydir/ltl<span class="variable">@jackliu</span>-ThinkPad.pub  </span><br><span class="line"></span><br><span class="line">ltl<span class="variable">@jackliu</span>-ThinkPad.pub为已经上传的开发机生成的公密</span><br><span class="line"></span><br><span class="line">显示密钥 最后的字符串为 密钥用户名 这里为 ltl<span class="variable">@jackliu</span>-ThinkPad</span><br><span class="line">vim gitosis.conf</span><br><span class="line"></span><br><span class="line">在文件尾增加以下内容</span><br><span class="line"></span><br><span class="line">[<span class="keyword">group</span> test-git]            <span class="comment">// 具有写权限的组名称</span></span><br><span class="line">writable = test-git         <span class="comment">// 该组可写的项目名称</span></span><br><span class="line">members = ltl<span class="variable">@jackliu</span>-ThinkPad  guangyun.ni<span class="variable">@yeepay</span>.com   <span class="comment">//该组的成员(密钥用户名) 多个用户协同开发时，以空格分隔</span></span><br><span class="line"></span><br><span class="line">如果要增加只读的组 参考如下</span><br><span class="line">[<span class="keyword">group</span> test-git-readnoly]          <span class="comment">// 具有都权限的组名称 </span></span><br><span class="line">readonly = test-git                <span class="comment">// 该组只读的项目名称 </span></span><br><span class="line">members = ltl<span class="variable">@jackliu</span>-ThinkPad     <span class="comment">// 该组的成员</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">提交修改</span><br><span class="line">git add .</span><br><span class="line">git commit -a -m <span class="string">"add test-git repo"</span></span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">cd /repo/gitosis-admin</span><br><span class="line"></span><br><span class="line">查看git服务器已经上传密钥</span><br><span class="line"><span class="keyword">ls</span> keydir  </span><br><span class="line"></span><br><span class="line">cat keydir/ltl<span class="variable">@jackliu</span>-ThinkPad.pub  </span><br><span class="line"></span><br><span class="line">ltl<span class="variable">@jackliu</span>-ThinkPad.pub为已经上传的开发机生成的公密</span><br><span class="line"></span><br><span class="line">显示密钥 最后的字符串为 密钥用户名 这里为 ltl<span class="variable">@jackliu</span>-ThinkPad</span><br><span class="line">vim gitosis.conf</span><br><span class="line"></span><br><span class="line">在文件尾增加以下内容</span><br><span class="line"></span><br><span class="line">[<span class="keyword">group</span> test-git]            <span class="comment">// 具有写权限的组名称</span></span><br><span class="line">writable = test-git         <span class="comment">// 该组可写的项目名称</span></span><br><span class="line">members = ltl<span class="variable">@jackliu</span>-ThinkPad  guangyun.ni<span class="variable">@yeepay</span>.com   <span class="comment">//该组的成员(密钥用户名) 多个用户协同开发时，以空格分隔</span></span><br><span class="line"></span><br><span class="line">如果要增加只读的组 参考如下</span><br><span class="line">[<span class="keyword">group</span> test-git-readnoly]          <span class="comment">// 具有都权限的组名称 </span></span><br><span class="line">readonly = test-git                <span class="comment">// 该组只读的项目名称 </span></span><br><span class="line">members = ltl<span class="variable">@jackliu</span>-ThinkPad     <span class="comment">// 该组的成员</span></span><br><span class="line"></span><br><span class="line">提交修改</span><br><span class="line">git add .</span><br><span class="line">git commit -a -m <span class="string">"add test-git repo"</span></span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
 <p>8.在个人开发机上初始，增加及使用项目test-git</p>
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> ~/repo  </span><br><span class="line"><span class="keyword">mkdir</span> <span class="keyword">test</span>-git   </span><br><span class="line"><span class="keyword">cd</span> <span class="keyword">test</span>-git  </span><br><span class="line">git init  </span><br><span class="line">touch readme  </span><br><span class="line">git add .   </span><br><span class="line">git commit -a -<span class="keyword">m</span> <span class="string">"init test-git"</span>  </span><br><span class="line">git remote add origin git@zgit:<span class="keyword">test</span>-git.git</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
 <p>9.增加协同开发者的公钥key到git服务器</p>
@@ -116,7 +116,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/07/02/gitosis配置/" data-id="ciiiyu3hu00006tccg4k7suht" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/07/02/gitosis配置/" data-id="ciito9pcb0000uycclmgfuso7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -124,6 +124,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2015/07/24/git开发流程/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          一个在用的git开发流程
+        
+      </div>
+    </a>
   
   
     <a href="/2015/06/23/hexo-github配置/" id="article-nav-older" class="article-nav-link-wrap">
@@ -150,7 +159,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -160,6 +169,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2015/07/24/git开发流程/">一个在用的git开发流程</a>
+          </li>
         
           <li>
             <a href="/2015/07/02/gitosis配置/">gitosis配置</a>

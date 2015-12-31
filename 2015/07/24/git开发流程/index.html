@@ -3,17 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>技术博客</title>
+  <title>一个在用的git开发流程 | 技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="技术博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="开发分支develop 日常提交12345678910111213git checkout -b myfeature origin/develop git commit -am &apos;xxxx&apos;git push origin develop   # 提交到远程，不能-f..git pull --rebase origin developgit add .git commit -am &apos;冲突解决信息&apos;g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一个在用的git开发流程">
+<meta property="og:url" content="http://yoursite.com/2015/07/24/git开发流程/index.html">
 <meta property="og:site_name" content="技术博客">
-<meta property="og:description">
+<meta property="og:description" content="开发分支develop 日常提交12345678910111213git checkout -b myfeature origin/develop git commit -am &apos;xxxx&apos;git push origin develop   # 提交到远程，不能-f..git pull --rebase origin developgit add .git commit -am &apos;冲突解决信息&apos;g">
+<meta property="og:updated_time" content="2015-12-31T03:08:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="技术博客">
-<meta name="twitter:description">
+<meta name="twitter:title" content="一个在用的git开发流程">
+<meta name="twitter:description" content="开发分支develop 日常提交12345678910111213git checkout -b myfeature origin/develop git commit -am &apos;xxxx&apos;git push origin develop   # 提交到远程，不能-f..git pull --rebase origin developgit add .git commit -am &apos;冲突解决信息&apos;g">
   
     <link rel="alternative" href="/atom.xml" title="技术博客" type="application/atom+xml">
   
@@ -59,9 +60,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-git开发流程" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-git开发流程" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/07/24/git开发流程/" class="article-date">
   <time datetime="2015-07-24T03:37:50.000Z" itemprop="datePublished">2015-07-24</time>
@@ -74,8 +73,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/24/git开发流程/">一个在用的git开发流程</a>
+    <h1 class="article-title" itemprop="name">
+      一个在用的git开发流程
     </h1>
   
 
@@ -100,103 +99,20 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-gitosis配置" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/07/02/gitosis配置/" class="article-date">
-  <time datetime="2015-07-02T07:26:47.000Z" itemprop="datePublished">2015-07-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/02/gitosis配置/">gitosis配置</a>
-    </h1>
+    <a href="/2015/07/02/gitosis配置/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">gitosis配置</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Git + gitosis</p>
-<p>1.查看Linux系统服务器系统版本</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/redhat-release   <span class="preprocessor"># 查看系统版本</span></span><br><span class="line">CentOS release <span class="number">6.4</span> (Final)</span><br><span class="line">ifconfig                 <span class="preprocessor"># 查看服务器的IP</span></span><br></pre></td></tr></table></figure>
-<p>2.在服务器上安装git及做些操作</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">执行命令</span><br><span class="line">sudo yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel perl-devel</span><br><span class="line"></span><br><span class="line">同时下载git-<span class="number">1.8</span><span class="number">.2</span><span class="number">.2</span>.tar.gz文件</span><br><span class="line"></span><br><span class="line">然后将其mv 到/usr/local/src</span><br><span class="line"></span><br><span class="line">cd /usr/local/src</span><br><span class="line">sudo tar -zvxf git-<span class="number">1.8</span><span class="number">.2</span><span class="number">.2</span>.tar.gz</span><br><span class="line">cd git-<span class="number">1.8</span><span class="number">.2</span><span class="number">.2</span></span><br><span class="line"></span><br><span class="line">sudo make prefix=/usr/local/git all</span><br><span class="line">sudo make prefix=/usr/local/git install</span><br><span class="line"></span><br><span class="line">增加软连接</span><br><span class="line">sudo ln -s /usr/local/git/bin<span class="comment">/* /usr/bin/</span><br><span class="line">git --version   // 如果能显示版本号，即表示成功</span></span><br></pre></td></tr></table></figure>
-<p>3.在服务器安装gitosis</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install <span class="keyword">python</span> <span class="keyword">python</span>-setuptools</span><br><span class="line"></span><br><span class="line"><span class="keyword">cd</span> /usr/local/src</span><br><span class="line"></span><br><span class="line">git clone gi<span class="variable">t:</span>//github.<span class="keyword">com</span>/res0nat0r/gitosis.git</span><br><span class="line"></span><br><span class="line"><span class="keyword">cd</span> gitosis</span><br><span class="line"></span><br><span class="line"><span class="keyword">python</span> setup.<span class="keyword">py</span> install  </span><br><span class="line"></span><br><span class="line">显示Finished processing dependencies <span class="keyword">for</span> gitosis==<span class="number">0.2</span>即表示成功</span><br></pre></td></tr></table></figure>
-<p>4.在开发机上,生产密钥并上传到服务器上</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa  -<span class="constant">C </span><span class="string">"example@gmail.com"</span> <span class="comment">#一路回车，不需要设置密码</span></span><br><span class="line"></span><br><span class="line">上传公钥到服务器(默认<span class="constant">SSH端</span>口<span class="number">22</span>)</span><br><span class="line">scp ~<span class="regexp">/.ssh/id</span>_rsa.pub root<span class="variable">@192</span>.<span class="number">168.100</span>.<span class="number">33</span><span class="symbol">:/tmp</span></span><br><span class="line"></span><br><span class="line">或编辑 <span class="string">'/etc/hosts'</span>文件，在<span class="string">'/etc/hosts'</span>文件里添加如下文本：</span><br><span class="line">local git server </span><br><span class="line"><span class="number">192.168</span>.<span class="number">100.202</span> zgit</span><br><span class="line"></span><br><span class="line">然后再上传自己的公钥到服务器</span><br><span class="line">scp ~<span class="regexp">/.ssh/id</span>_rsa.pub tailin<span class="variable">@zgit</span><span class="symbol">:/tmp/</span></span><br><span class="line"></span><br><span class="line">登录到git服务器</span><br><span class="line">ls /tmp/id_rsa.pub    /<span class="regexp">/ 显示已经上传的密钥</span></span><br></pre></td></tr></table></figure>
-<p>5.服务器上生成git用户，使用git用户并初始化’gitosis’</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">创建git版本管理用户 git</span><br><span class="line">sudo useradd -c <span class="string">'git version manage'</span> -m -d <span class="regexp">/home/</span>git -s bin/bash  git</span><br><span class="line"></span><br><span class="line">更改git用户的密码</span><br><span class="line">sudo passwd git</span><br><span class="line"></span><br><span class="line">su 到git用户</span><br><span class="line">su - git</span><br><span class="line">gitosis-init &lt; <span class="regexp">/tmp/</span>id_rsa.pub</span><br><span class="line"></span><br><span class="line">显示以下信息即表示成功</span><br><span class="line">Initialized empty Git repository <span class="keyword">in</span> <span class="regexp">/home/</span>git<span class="regexp">/repositories/</span>gitosis-admin.git/</span><br><span class="line">Reinitialized existing Git repository <span class="keyword">in</span> <span class="regexp">/home/</span>git<span class="regexp">/repositories/</span>gitosis-admin.git/</span><br><span class="line"></span><br><span class="line">删除密钥</span><br><span class="line">rm -rf <span class="regexp">/tmp/</span>id_rsa.pub</span><br></pre></td></tr></table></figure>
-<p>6.在个人开发机上导出项目管理</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /repo</span><br><span class="line">cd /repo</span><br><span class="line">git clone git<span class="variable">@125</span>.<span class="number">28.5</span>.<span class="number">62</span><span class="symbol">:gitosis-admin</span>.git</span><br></pre></td></tr></table></figure>
-<p>7.在个人开发机增加及设置管理项目</p>
-<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">cd /repo/gitosis-admin</span><br><span class="line"></span><br><span class="line">查看git服务器已经上传密钥</span><br><span class="line"><span class="keyword">ls</span> keydir  </span><br><span class="line"></span><br><span class="line">cat keydir/ltl<span class="variable">@jackliu</span>-ThinkPad.pub  </span><br><span class="line"></span><br><span class="line">ltl<span class="variable">@jackliu</span>-ThinkPad.pub为已经上传的开发机生成的公密</span><br><span class="line"></span><br><span class="line">显示密钥 最后的字符串为 密钥用户名 这里为 ltl<span class="variable">@jackliu</span>-ThinkPad</span><br><span class="line">vim gitosis.conf</span><br><span class="line"></span><br><span class="line">在文件尾增加以下内容</span><br><span class="line"></span><br><span class="line">[<span class="keyword">group</span> test-git]            <span class="comment">// 具有写权限的组名称</span></span><br><span class="line">writable = test-git         <span class="comment">// 该组可写的项目名称</span></span><br><span class="line">members = ltl<span class="variable">@jackliu</span>-ThinkPad  guangyun.ni<span class="variable">@yeepay</span>.com   <span class="comment">//该组的成员(密钥用户名) 多个用户协同开发时，以空格分隔</span></span><br><span class="line"></span><br><span class="line">如果要增加只读的组 参考如下</span><br><span class="line">[<span class="keyword">group</span> test-git-readnoly]          <span class="comment">// 具有都权限的组名称 </span></span><br><span class="line">readonly = test-git                <span class="comment">// 该组只读的项目名称 </span></span><br><span class="line">members = ltl<span class="variable">@jackliu</span>-ThinkPad     <span class="comment">// 该组的成员</span></span><br><span class="line"></span><br><span class="line">提交修改</span><br><span class="line">git add .</span><br><span class="line">git commit -a -m <span class="string">"add test-git repo"</span></span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
-<p>8.在个人开发机上初始，增加及使用项目test-git</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> ~/repo  </span><br><span class="line"><span class="keyword">mkdir</span> <span class="keyword">test</span>-git   </span><br><span class="line"><span class="keyword">cd</span> <span class="keyword">test</span>-git  </span><br><span class="line">git init  </span><br><span class="line">touch readme  </span><br><span class="line">git add .   </span><br><span class="line">git commit -a -<span class="keyword">m</span> <span class="string">"init test-git"</span>  </span><br><span class="line">git remote add origin git@zgit:<span class="keyword">test</span>-git.git</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
-<p>9.增加协同开发者的公钥key到git服务器</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">执行 cd repo/gitosis-admin/keydir 切换目录</span><br><span class="line"> </span><br><span class="line">把协同开发者的id_rsa<span class="class">.pub</span> 文件里的数据 拷贝到 对应的开发者的密钥用户名.pub文件。如把密钥用户名 guangyun.ni@yeepay<span class="class">.com</span> 的 id_rsa<span class="class">.pub</span> 文件中文本 粘贴到 guangyun.ni@yeepay<span class="class">.com</span><span class="class">.pub</span> 文件里，并保存, 然后将添加数据后的目录更新到git服务器</span><br><span class="line"></span><br><span class="line">git add .  </span><br><span class="line">git commit -am <span class="string">"add guangyun.ni@yeepay.com.pub file"</span>  </span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/07/02/gitosis配置/" data-id="ciito9pcb0000uycclmgfuso7" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
 
-
-  
-    <article id="post-hexo-github配置" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/06/23/hexo-github配置/" class="article-date">
-  <time datetime="2015-06-23T07:46:17.000Z" itemprop="datePublished">2015-06-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/23/hexo-github配置/">hexo-github配置</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>hexo start<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>hexo new <span class="string">"My New Post"</span></span><br><span class="line"><span class="variable">$ </span>hexo server</span><br><span class="line"><span class="variable">$ </span>hexo generate</span><br><span class="line"><span class="variable">$ </span>hexo deploy</span><br></pre></td></tr></table></figure></p>
-<p>如果报错 hexo ERROR Deployer not found: github<br><figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">npm</span> install hexo-deployer-git <span class="comment">--save</span></span><br><span class="line">将deploy 的 <span class="typedef"><span class="keyword">type</span>由github改为git</span></span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/23/hexo-github配置/" data-id="ciito9pck0001uycczp88ap3l" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-  
 </section>
         
           <aside id="sidebar">
