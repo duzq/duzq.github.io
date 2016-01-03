@@ -94,9 +94,54 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/07/24/git开发流程/" data-id="ciitobzey0002w0cc89o97x49" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/07/24/git开发流程/" data-id="ciiy55apq0005k4cc3zm22ni5" class="article-share-link">Share</a>
       
       
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-理解epoll" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/07/03/理解epoll/" class="article-date">
+  <time datetime="2015-07-03T06:04:49.000Z" itemprop="datePublished">2015-07-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/03/理解epoll/">理解epoll</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>epoll是Linux内核为处理大批量文件描述符而作了改进的poll，是Linux下多路复用IO接口select/poll的增强版本，它能显著提高程序在大量并发连接中只有少量活跃的情况下的系统CPU利用率。</p>
+<h4 id="u4F18_u70B9"><a href="#u4F18_u70B9" class="headerlink" title="优点"></a>优点</h4><p>1: 支持一个进程打开大数目的socket描述符</p>
+<p>select 一个进程所打开的FD是有一定限制的，由FD_SETSIZE设置，默认值是1024<br>epoll则没有这个限制 具体数目cat /proc/sys/fs/file-max查看 与系统内存关系大</p>
+<p>2: IO效率不随FD数目增加而线性下降</p>
+<p>select/poll的弱点就是当拥有一个很大的socket集合，由于网络延时，任一时间只有部分的socket是“活跃”的，但是select/poll每次调用都会线性扫描全部的集合，导致效率呈现线性下降</p>
+<p>epoll只会对“活跃”的socket进行操作, 这是因为在内核实现中epoll是根据每个fd上面的callback函数实现的。那么，只有“活跃”的socket才会主动的去调用callback函数，其他idle状态socket则不会，在这点上, epoll实现了一个伪AIO</p>
+<p>3: 使用mmap加速内核与用户空间的消息传递, epoll是通过内核与用户空间mmap同一块内存实现的</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/07/03/理解epoll/" data-id="ciiy55apc0001k4cc6rayu2jj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tornado/">tornado</a></li></ul>
+
     </footer>
   </div>
   
@@ -148,7 +193,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/07/02/gitosis配置/" data-id="ciitobzeh0000w0cczfv2qt6v" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/07/02/gitosis配置/" data-id="ciiy55aoh0000k4ccdq1waxk7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -186,7 +231,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/23/hexo-github配置/" data-id="ciitobzer0001w0ccut54mttn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/23/hexo-github配置/" data-id="ciiy55apn0004k4cczgx3nr5c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -204,14 +249,28 @@
     
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/tornado/">tornado</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/tornado/" style="font-size: 10px;">tornado</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -224,6 +283,10 @@
         
           <li>
             <a href="/2015/07/24/git开发流程/">一个在用的git开发流程</a>
+          </li>
+        
+          <li>
+            <a href="/2015/07/03/理解epoll/">理解epoll</a>
           </li>
         
           <li>
@@ -246,7 +309,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2015 duzhiqiang<br>
+      &copy; 2016 duzhiqiang<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
