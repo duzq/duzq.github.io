@@ -3,24 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>理解epoll | 技术博客</title>
+  <title>CentOS用户相关 | 技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="epoll是Linux内核为处理大批量文件描述符而作了改进的poll，是Linux下多路复用IO接口select/poll的增强版本，它能显著提高程序在大量并发连接中只有少量活跃的情况下的系统CPU利用率。
-优点1: 支持一个进程打开大数目的socket描述符
-select 一个进程所打开的FD是有一定限制的，由FD_SETSIZE设置，默认值是1024epoll则没有这个限制 具体数目cat /">
+  <meta name="description" content="123456789cat /etc/redhat-release   # 查看系统版本adduser test     // 添加用户passwd test       // 修改密码userdel test       // 删除用户testuserdel -r test    // 删除用户及用户目录">
 <meta property="og:type" content="article">
-<meta property="og:title" content="理解epoll">
-<meta property="og:url" content="http://yoursite.com/2015/07/03/理解epoll/index.html">
+<meta property="og:title" content="CentOS用户相关">
+<meta property="og:url" content="http://yoursite.com/2015/06/24/CentOS用户相关/index.html">
 <meta property="og:site_name" content="技术博客">
-<meta property="og:description" content="epoll是Linux内核为处理大批量文件描述符而作了改进的poll，是Linux下多路复用IO接口select/poll的增强版本，它能显著提高程序在大量并发连接中只有少量活跃的情况下的系统CPU利用率。
-优点1: 支持一个进程打开大数目的socket描述符
-select 一个进程所打开的FD是有一定限制的，由FD_SETSIZE设置，默认值是1024epoll则没有这个限制 具体数目cat /">
-<meta property="og:updated_time" content="2016-01-03T06:12:04.000Z">
+<meta property="og:description" content="123456789cat /etc/redhat-release   # 查看系统版本adduser test     // 添加用户passwd test       // 修改密码userdel test       // 删除用户testuserdel -r test    // 删除用户及用户目录">
+<meta property="og:updated_time" content="2016-01-11T03:11:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="理解epoll">
-<meta name="twitter:description" content="epoll是Linux内核为处理大批量文件描述符而作了改进的poll，是Linux下多路复用IO接口select/poll的增强版本，它能显著提高程序在大量并发连接中只有少量活跃的情况下的系统CPU利用率。
-优点1: 支持一个进程打开大数目的socket描述符
-select 一个进程所打开的FD是有一定限制的，由FD_SETSIZE设置，默认值是1024epoll则没有这个限制 具体数目cat /">
+<meta name="twitter:title" content="CentOS用户相关">
+<meta name="twitter:description" content="123456789cat /etc/redhat-release   # 查看系统版本adduser test     // 添加用户passwd test       // 修改密码userdel test       // 删除用户testuserdel -r test    // 删除用户及用户目录">
   
     <link rel="alternative" href="/atom.xml" title="技术博客" type="application/atom+xml">
   
@@ -66,10 +60,10 @@ select 一个进程所打开的FD是有一定限制的，由FD_SETSIZE设置，�
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-理解epoll" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-CentOS用户相关" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/07/03/理解epoll/" class="article-date">
-  <time datetime="2015-07-03T06:04:49.000Z" itemprop="datePublished">2015-07-03</time>
+    <a href="/2015/06/24/CentOS用户相关/" class="article-date">
+  <time datetime="2015-06-24T08:29:16.000Z" itemprop="datePublished">2015-06-24</time>
 </a>
     
   </div>
@@ -80,7 +74,7 @@ select 一个进程所打开的FD是有一定限制的，由FD_SETSIZE设置，�
         
   
     <h1 class="article-title" itemprop="name">
-      理解epoll
+      CentOS用户相关
     </h1>
   
 
@@ -88,21 +82,15 @@ select 一个进程所打开的FD是有一定限制的，由FD_SETSIZE设置，�
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>epoll是Linux内核为处理大批量文件描述符而作了改进的poll，是Linux下多路复用IO接口select/poll的增强版本，它能显著提高程序在大量并发连接中只有少量活跃的情况下的系统CPU利用率。</p>
-<h4 id="u4F18_u70B9"><a href="#u4F18_u70B9" class="headerlink" title="优点"></a>优点</h4><p>1: 支持一个进程打开大数目的socket描述符</p>
-<p>select 一个进程所打开的FD是有一定限制的，由FD_SETSIZE设置，默认值是1024<br>epoll则没有这个限制 具体数目cat /proc/sys/fs/file-max查看 与系统内存关系大</p>
-<p>2: IO效率不随FD数目增加而线性下降</p>
-<p>select/poll的弱点就是当拥有一个很大的socket集合，由于网络延时，任一时间只有部分的socket是“活跃”的，但是select/poll每次调用都会线性扫描全部的集合，导致效率呈现线性下降</p>
-<p>epoll只会对“活跃”的socket进行操作, 这是因为在内核实现中epoll是根据每个fd上面的callback函数实现的。那么，只有“活跃”的socket才会主动的去调用callback函数，其他idle状态socket则不会，在这点上, epoll实现了一个伪AIO</p>
-<p>3: 使用mmap加速内核与用户空间的消息传递, epoll是通过内核与用户空间mmap同一块内存实现的</p>
+        <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cat</span> /etc/redhat-release   # 查看系统版本</span><br><span class="line"></span><br><span class="line">adduser <span class="keyword">test</span>     <span class="comment">// 添加用户</span></span><br><span class="line"></span><br><span class="line">passwd <span class="keyword">test</span>       <span class="comment">// 修改密码</span></span><br><span class="line"></span><br><span class="line">userdel <span class="keyword">test</span>       <span class="comment">// 删除用户test</span></span><br><span class="line"></span><br><span class="line">userdel -r <span class="keyword">test</span>    <span class="comment">// 删除用户及用户目录</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/07/03/理解epoll/" data-id="cij9ebwy60003j0ccll2qs6ew" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/24/CentOS用户相关/" data-id="cij9ebwyt000cj0cc52o8h5od" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tornado/">tornado</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
 
     </footer>
   </div>
@@ -110,19 +98,19 @@ select 一个进程所打开的FD是有一定限制的，由FD_SETSIZE设置，�
     
 <nav id="article-nav">
   
-    <a href="/2015/07/04/CentOS-python升级/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/07/02/gitosis配置/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          CentOS python升级
+          gitosis配置
         
       </div>
     </a>
   
   
-    <a href="/2015/07/02/gitosis配置/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2015/06/23/hexo-github配置/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">gitosis配置</div>
+      <div class="article-nav-title">hexo-github配置</div>
     </a>
   
 </nav>

@@ -3,24 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>理解epoll | 技术博客</title>
+  <title>CentOS python升级 | 技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="epoll是Linux内核为处理大批量文件描述符而作了改进的poll，是Linux下多路复用IO接口select/poll的增强版本，它能显著提高程序在大量并发连接中只有少量活跃的情况下的系统CPU利用率。
-优点1: 支持一个进程打开大数目的socket描述符
-select 一个进程所打开的FD是有一定限制的，由FD_SETSIZE设置，默认值是1024epoll则没有这个限制 具体数目cat /">
+  <meta name="description" content="python升级
+预安装yum install -y zlib-devel bzip2-devel openssl-devel xz-libs wget
+1.官网下载最新python安装包
+123456tar -xvf Python-2.7.3.tgzcd Python-2.7.3./configure --prefix=/usr/localmakemake altinstallpython2.7">
 <meta property="og:type" content="article">
-<meta property="og:title" content="理解epoll">
-<meta property="og:url" content="http://yoursite.com/2015/07/03/理解epoll/index.html">
+<meta property="og:title" content="CentOS python升级">
+<meta property="og:url" content="http://yoursite.com/2015/07/04/CentOS-python升级/index.html">
 <meta property="og:site_name" content="技术博客">
-<meta property="og:description" content="epoll是Linux内核为处理大批量文件描述符而作了改进的poll，是Linux下多路复用IO接口select/poll的增强版本，它能显著提高程序在大量并发连接中只有少量活跃的情况下的系统CPU利用率。
-优点1: 支持一个进程打开大数目的socket描述符
-select 一个进程所打开的FD是有一定限制的，由FD_SETSIZE设置，默认值是1024epoll则没有这个限制 具体数目cat /">
-<meta property="og:updated_time" content="2016-01-03T06:12:04.000Z">
+<meta property="og:description" content="python升级
+预安装yum install -y zlib-devel bzip2-devel openssl-devel xz-libs wget
+1.官网下载最新python安装包
+123456tar -xvf Python-2.7.3.tgzcd Python-2.7.3./configure --prefix=/usr/localmakemake altinstallpython2.7">
+<meta property="og:updated_time" content="2016-01-05T08:23:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="理解epoll">
-<meta name="twitter:description" content="epoll是Linux内核为处理大批量文件描述符而作了改进的poll，是Linux下多路复用IO接口select/poll的增强版本，它能显著提高程序在大量并发连接中只有少量活跃的情况下的系统CPU利用率。
-优点1: 支持一个进程打开大数目的socket描述符
-select 一个进程所打开的FD是有一定限制的，由FD_SETSIZE设置，默认值是1024epoll则没有这个限制 具体数目cat /">
+<meta name="twitter:title" content="CentOS python升级">
+<meta name="twitter:description" content="python升级
+预安装yum install -y zlib-devel bzip2-devel openssl-devel xz-libs wget
+1.官网下载最新python安装包
+123456tar -xvf Python-2.7.3.tgzcd Python-2.7.3./configure --prefix=/usr/localmakemake altinstallpython2.7">
   
     <link rel="alternative" href="/atom.xml" title="技术博客" type="application/atom+xml">
   
@@ -66,10 +69,10 @@ select 一个进程所打开的FD是有一定限制的，由FD_SETSIZE设置，�
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-理解epoll" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-CentOS-python升级" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/07/03/理解epoll/" class="article-date">
-  <time datetime="2015-07-03T06:04:49.000Z" itemprop="datePublished">2015-07-03</time>
+    <a href="/2015/07/04/CentOS-python升级/" class="article-date">
+  <time datetime="2015-07-04T09:43:53.000Z" itemprop="datePublished">2015-07-04</time>
 </a>
     
   </div>
@@ -80,7 +83,7 @@ select 一个进程所打开的FD是有一定限制的，由FD_SETSIZE设置，�
         
   
     <h1 class="article-title" itemprop="name">
-      理解epoll
+      CentOS python升级
     </h1>
   
 
@@ -88,21 +91,24 @@ select 一个进程所打开的FD是有一定限制的，由FD_SETSIZE设置，�
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>epoll是Linux内核为处理大批量文件描述符而作了改进的poll，是Linux下多路复用IO接口select/poll的增强版本，它能显著提高程序在大量并发连接中只有少量活跃的情况下的系统CPU利用率。</p>
-<h4 id="u4F18_u70B9"><a href="#u4F18_u70B9" class="headerlink" title="优点"></a>优点</h4><p>1: 支持一个进程打开大数目的socket描述符</p>
-<p>select 一个进程所打开的FD是有一定限制的，由FD_SETSIZE设置，默认值是1024<br>epoll则没有这个限制 具体数目cat /proc/sys/fs/file-max查看 与系统内存关系大</p>
-<p>2: IO效率不随FD数目增加而线性下降</p>
-<p>select/poll的弱点就是当拥有一个很大的socket集合，由于网络延时，任一时间只有部分的socket是“活跃”的，但是select/poll每次调用都会线性扫描全部的集合，导致效率呈现线性下降</p>
-<p>epoll只会对“活跃”的socket进行操作, 这是因为在内核实现中epoll是根据每个fd上面的callback函数实现的。那么，只有“活跃”的socket才会主动的去调用callback函数，其他idle状态socket则不会，在这点上, epoll实现了一个伪AIO</p>
-<p>3: 使用mmap加速内核与用户空间的消息传递, epoll是通过内核与用户空间mmap同一块内存实现的</p>
-
+        <p>python升级</p>
+<p>预安装<br>yum install -y zlib-devel bzip2-devel openssl-devel xz-libs wget</p>
+<p>1.官网下载最新python安装包</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf Python-<span class="number">2.7</span><span class="number">.3</span>.tgz</span><br><span class="line">cd Python-<span class="number">2.7</span><span class="number">.3</span></span><br><span class="line">./configure --prefix=/usr/local</span><br><span class="line">make</span><br><span class="line">make altinstall</span><br><span class="line">python2<span class="number">.7</span> -V   <span class="comment">// 检查是否安装成功</span></span><br></pre></td></tr></table></figure>
+<p>2.创建一个链接来使系统默认python变为python2.7</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s <span class="regexp">/usr/</span>local<span class="regexp">/bin/</span>python2.<span class="number">7</span>  <span class="regexp">/usr/</span>bin<span class="regexp">/python</span></span><br></pre></td></tr></table></figure>
+<p>修复yum<br>yum无法运行修改/usr/bin/yum文件 #!/usr/bin/python  改为  #!/usr/bin/python2.6</p>
+<p>安装setuptools</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --<span class="keyword">no</span>-check-certificate http<span class="variable">s:</span>//pypi.<span class="keyword">python</span>.org/packages/<span class="keyword">source</span>/<span class="keyword">s</span>/setuptools/setuptools-<span class="number">1.4</span>.<span class="number">2</span>.tar.gz</span><br></pre></td></tr></table></figure>
+<p>安装 pip</p>
+<figure class="highlight"><figcaption><span>https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py | python2.7</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/07/03/理解epoll/" data-id="cij9ebwy60003j0ccll2qs6ew" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/07/04/CentOS-python升级/" data-id="cij9ebwxv0000j0cchwvhaw6o" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tornado/">tornado</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
 
     </footer>
   </div>
@@ -110,19 +116,19 @@ select 一个进程所打开的FD是有一定限制的，由FD_SETSIZE设置，�
     
 <nav id="article-nav">
   
-    <a href="/2015/07/04/CentOS-python升级/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/07/24/git开发流程/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          CentOS python升级
+          一个在用的git开发流程
         
       </div>
     </a>
   
   
-    <a href="/2015/07/02/gitosis配置/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2015/07/03/理解epoll/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">gitosis配置</div>
+      <div class="article-nav-title">理解epoll</div>
     </a>
   
 </nav>
