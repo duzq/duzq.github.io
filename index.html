@@ -61,6 +61,45 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-33-search-in-rotated-sorted-array-md" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/17/33-search-in-rotated-sorted-array-md/" class="article-date">
+  <time datetime="2016-02-17T10:26:46.000Z" itemprop="datePublished">2016-02-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/17/33-search-in-rotated-sorted-array-md/">33-search-in-rotated-sorted-array.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="string">"""</span><br><span class="line">Suppose a sorted array is rotated at some pivot unknown to you beforehand.</span><br><span class="line"></span><br><span class="line">(i.e., 0 1 2 4 5 6 7 might become 4 5 6 7 0 1 2).</span><br><span class="line"></span><br><span class="line">You are given a target value to search. If found in the array return its index, </span><br><span class="line">otherwise return -1.</span><br><span class="line"></span><br><span class="line">You may assume no duplicate exists in the array.</span><br><span class="line"></span><br><span class="line">"""</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span><br><span class="line">        :type nums: List[int]</span><br><span class="line">        :type target: int</span><br><span class="line">        :rtype: int</span><br><span class="line">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">        start = <span class="number">0</span></span><br><span class="line">        end = len(nums) - <span class="number">1</span></span><br><span class="line">        mid = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> start + <span class="number">1</span> &lt; end:</span><br><span class="line">            mid = start + (end - start) / <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid] == target:</span><br><span class="line">                <span class="keyword">return</span> mid</span><br><span class="line">            <span class="keyword">if</span> nums[start] &lt; nums[mid]:</span><br><span class="line">                <span class="keyword">if</span> nums[start] &lt;= target <span class="keyword">and</span> target &lt;= nums[mid]:</span><br><span class="line">                    end = mid</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    start = mid</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> nums[mid] &lt;= target <span class="keyword">and</span> target &lt;= nums[end]:</span><br><span class="line">                    start = mid</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    end = mid</span><br><span class="line">        <span class="keyword">if</span> nums[start] == target:</span><br><span class="line">            <span class="keyword">return</span> start</span><br><span class="line">        <span class="keyword">if</span> nums[end] == target:</span><br><span class="line">            <span class="keyword">return</span> end</span><br><span class="line">        <span class="keyword">return</span> - <span class="number">1</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/02/17/33-search-in-rotated-sorted-array-md/" data-id="cikqwu9nv0010uk6i3bmvd0ru" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-git开发流程" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/07/24/git开发流程/" class="article-date">
@@ -94,7 +133,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/07/24/git开发流程/" data-id="cikqokood000gfxs6gcb1o9rf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/07/24/git开发流程/" data-id="cikqwu9n1000guk6irsrnlub3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
@@ -149,10 +188,244 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/07/02/gitosis配置/" data-id="cikqokoog000jfxs62vfm0jjw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/07/02/gitosis配置/" data-id="cikqwu9n4000juk6i4nvgokgk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-10-regular-expression-matching-md" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/03/21/10-regular-expression-matching-md/" class="article-date">
+  <time datetime="2015-03-21T10:25:56.000Z" itemprop="datePublished">2015-03-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/03/21/10-regular-expression-matching-md/">10-regular-expression-matching.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="string">"""</span><br><span class="line">Implement regular expression matching with support for '.' and '*'.</span><br><span class="line"></span><br><span class="line">'.' Matches any single character.</span><br><span class="line">'*' Matches zero or more of the preceding element.</span><br><span class="line"></span><br><span class="line">The matching should cover the entire input string (not partial).</span><br><span class="line"></span><br><span class="line">The function prototype should be:</span><br><span class="line">bool isMatch(const char *s, const char *p)</span><br><span class="line"></span><br><span class="line">Some examples:</span><br><span class="line">isMatch("aa","a") → false</span><br><span class="line">isMatch("aa","aa") → true</span><br><span class="line">isMatch("aaa","aa") → false</span><br><span class="line">isMatch("aa", "a*") → true</span><br><span class="line">isMatch("aa", ".*") → true</span><br><span class="line">isMatch("ab", ".*") → true</span><br><span class="line">isMatch("aab", "c*a*b") → true</span><br><span class="line"></span><br><span class="line">"""</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    _hash = <span class="keyword">None</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isMatch</span><span class="params">(self, s, p)</span>:</span></span><br><span class="line">        <span class="string">"""</span><br><span class="line">        :type s: str</span><br><span class="line">        :type p: str</span><br><span class="line">        :rtype: bool</span><br><span class="line">        """</span></span><br><span class="line">        <span class="keyword">if</span> self._hash <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">            self._hash = &#123;&#125;</span><br><span class="line">        key = s + p</span><br><span class="line">        <span class="keyword">if</span> key <span class="keyword">in</span> self._hash:</span><br><span class="line">            <span class="keyword">return</span> self._hash[key]</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">if</span> p == <span class="string">''</span>:</span><br><span class="line">            <span class="keyword">return</span> s == <span class="string">''</span></span><br><span class="line">        <span class="keyword">if</span> s == <span class="string">''</span>:</span><br><span class="line">            <span class="keyword">if</span> len(p) % <span class="number">2</span> == <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">            i = <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> i &lt; len(p):</span><br><span class="line">                <span class="keyword">if</span> p[i] != <span class="string">'*'</span>:</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">                i += <span class="number">2</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> len(p) &gt; <span class="number">1</span> <span class="keyword">and</span> p[<span class="number">1</span>] == <span class="string">'*'</span>:</span><br><span class="line">            <span class="keyword">if</span> p[<span class="number">0</span>] == <span class="string">'.'</span>:</span><br><span class="line">                self._hash[key] = self.isMatch(s[<span class="number">1</span>:], p) <span class="keyword">or</span> self.isMatch(s, p[<span class="number">2</span>:])</span><br><span class="line">            <span class="keyword">elif</span> p[<span class="number">0</span>] == s[<span class="number">0</span>]:</span><br><span class="line">                self._hash[key] = self.isMatch(s[<span class="number">1</span>:], p) <span class="keyword">or</span> self.isMatch(s, p[<span class="number">2</span>:])</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                self._hash[key] = self.isMatch(s, p[<span class="number">2</span>:])</span><br><span class="line">        <span class="keyword">elif</span> p[<span class="number">0</span>] == <span class="string">'.'</span>:</span><br><span class="line">            self._hash[key] = self.isMatch(s[<span class="number">1</span>:], p[<span class="number">1</span>:])</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self._hash[key] = s[<span class="number">0</span>] == p[<span class="number">0</span>] <span class="keyword">and</span> self.isMatch(s[<span class="number">1</span>:], p[<span class="number">1</span>:])</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> self._hash[key]</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/03/21/10-regular-expression-matching-md/" data-id="cikqwu9m20000uk6izltuue81" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-9-palindrome-number-md" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/03/20/9-palindrome-number-md/" class="article-date">
+  <time datetime="2015-03-20T10:25:03.000Z" itemprop="datePublished">2015-03-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/03/20/9-palindrome-number-md/">9-palindrome-number.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="string">"""</span><br><span class="line">Determine whether an integer is a palindrome. Do this without extra space.</span><br><span class="line"></span><br><span class="line">Some hints:</span><br><span class="line">Could negative integers be palindromes? (ie, -1)</span><br><span class="line"></span><br><span class="line">If you are thinking of converting the integer to string, note the restriction </span><br><span class="line">of using extra space.</span><br><span class="line"></span><br><span class="line">You could also try reversing an integer. However, if you have solved the problem </span><br><span class="line">"Reverse Integer", you know that the reversed integer might overflow. </span><br><span class="line">How would you handle such case?</span><br><span class="line"></span><br><span class="line">There is a more generic way of solving this problem.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">"""</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isPalindrome</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        <span class="string">"""</span><br><span class="line">        :type x: int</span><br><span class="line">        :rtype: bool</span><br><span class="line">        """</span></span><br><span class="line">        <span class="keyword">if</span> x &lt; <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">return</span> x == self.reverse(x)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reverse</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        rst = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> x != <span class="number">0</span>:</span><br><span class="line">            rst = rst * <span class="number">10</span> + x % <span class="number">10</span></span><br><span class="line">            x = x / <span class="number">10</span></span><br><span class="line">        <span class="keyword">return</span> rst</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/03/20/9-palindrome-number-md/" data-id="cikqwu9ng000quk6iuj7g1skh" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-7-Reverse-Integer-md" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/03/19/7-Reverse-Integer-md/" class="article-date">
+  <time datetime="2015-03-19T10:22:47.000Z" itemprop="datePublished">2015-03-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/03/19/7-Reverse-Integer-md/">7-Reverse-Integer.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="string">"""</span><br><span class="line"></span><br><span class="line">Reverse digits of an integer.</span><br><span class="line"></span><br><span class="line">Example1: x = 123, return 321</span><br><span class="line">Example2: x = -123, return -321</span><br><span class="line"></span><br><span class="line">"""</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reverse</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        <span class="string">"""</span><br><span class="line">        :type x: int</span><br><span class="line">        :rtype: int</span><br><span class="line">        """</span></span><br><span class="line">        <span class="keyword">if</span> x == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        neg = <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> x &lt; <span class="number">0</span>:</span><br><span class="line">            neg, x = -<span class="number">1</span>, -x</span><br><span class="line">        reverse = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> x &gt; <span class="number">0</span> :</span><br><span class="line">            reverse = reverse * <span class="number">10</span> + x % <span class="number">10</span></span><br><span class="line">            x = x / <span class="number">10</span></span><br><span class="line"></span><br><span class="line">        reverse = neg * reverse</span><br><span class="line">        <span class="keyword">if</span> reverse &lt; -(<span class="number">1</span>&lt;&lt;<span class="number">31</span>) <span class="keyword">or</span> reverse &gt; (<span class="number">1</span>&lt;&lt;<span class="number">31</span>) -<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> reverse</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/03/19/7-Reverse-Integer-md/" data-id="cikqwu9nk000suk6i2prp6vpo" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-6-ZigZag-Conversion-md" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/03/18/6-ZigZag-Conversion-md/" class="article-date">
+  <time datetime="2015-03-18T10:21:33.000Z" itemprop="datePublished">2015-03-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/03/18/6-ZigZag-Conversion-md/">6-ZigZag-Conversion.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="string">"""</span><br><span class="line">The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of </span><br><span class="line">rows like this: (you may want to display this pattern in a fixed font for better legibility)</span><br><span class="line"></span><br><span class="line">P   A   H   N</span><br><span class="line">A P L S I I G</span><br><span class="line">Y   I   R</span><br><span class="line"></span><br><span class="line">And then read line by line: "PAHNAPLSIIGYIR"</span><br><span class="line">Write the code that will take a string and make this conversion given a number of rows:</span><br><span class="line"></span><br><span class="line">string convert(string text, int nRows);</span><br><span class="line">convert("PAYPALISHIRING", 3) should return "PAHNAPLSIIGYIR".</span><br><span class="line"></span><br><span class="line">"""</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class <span class="type">Solution</span>(<span class="keyword">object</span>):</span><br><span class="line">    def convert(self, s, numRows):</span><br><span class="line">        <span class="string">"""</span><br><span class="line">        :type s: str</span><br><span class="line">        :type numRows: int</span><br><span class="line">        :rtype: str</span><br><span class="line">        """</span></span><br><span class="line">        <span class="literal">result</span> = []</span><br><span class="line">        length = len(s)</span><br><span class="line">        <span class="keyword">if</span> length &lt;= numRows <span class="keyword">or</span> numRows == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> s</span><br><span class="line">        step = <span class="number">2</span> * (numRows - <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="type">range</span>(numRows):</span><br><span class="line">            interval = step - <span class="number">2</span> * i</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="type">range</span>(i, length, step):</span><br><span class="line">                <span class="literal">result</span>.append(s[j])</span><br><span class="line">                <span class="keyword">if</span> interval &lt; step <span class="keyword">and</span> interval &gt; <span class="number">0</span> <span class="keyword">and</span> j + interval &lt; length <span class="keyword">and</span> \</span><br><span class="line">                    len(<span class="literal">result</span>) &lt; length:</span><br><span class="line">                    <span class="literal">result</span>.append(s[j + interval])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>.join(<span class="literal">result</span>)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/03/18/6-ZigZag-Conversion-md/" data-id="cikqwu9nm000uuk6irntarinc" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-5-Longest-Palindromic-Substring-md" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/03/17/5-Longest-Palindromic-Substring-md/" class="article-date">
+  <time datetime="2015-03-17T10:20:04.000Z" itemprop="datePublished">2015-03-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/03/17/5-Longest-Palindromic-Substring-md/">5-Longest-Palindromic-Substring.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="string">"""</span><br><span class="line">Given a string S, find the longest palindromic substring in S. You may assume </span><br><span class="line">that the maximum length of S is 1000, and there exists one unique longest </span><br><span class="line">palindromic substring.</span><br><span class="line"></span><br><span class="line">"""</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestPalindrome</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        <span class="string">"""</span><br><span class="line">        :type s: str</span><br><span class="line">        :rtype: str</span><br><span class="line">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> s:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">""</span></span><br><span class="line">        length = len(s)</span><br><span class="line">        longest = <span class="number">0</span></span><br><span class="line">        result = <span class="string">""</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, length):</span><br><span class="line">            count = <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> i - count &gt;= <span class="number">0</span> <span class="keyword">and</span> i + count &lt;= <span class="number">2</span> * length \</span><br><span class="line">                <span class="keyword">and</span> self.get_character(s, i-count) == self.get_character(s, i + count):</span><br><span class="line">                count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">            count -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> count &gt; longest:</span><br><span class="line">                result = s[(i - count) / <span class="number">2</span>: (i + count) / <span class="number">2</span>]</span><br><span class="line">                longest = count</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_character</span><span class="params">(self, param, index)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> index % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"#"</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> param[index / <span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/03/17/5-Longest-Palindromic-Substring-md/" data-id="cikqwu9nq000wuk6ig24u8wcc" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-4-Median-of-Two-Sorted-Arrays-md" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/02/17/4-Median-of-Two-Sorted-Arrays-md/" class="article-date">
+  <time datetime="2015-02-17T10:15:06.000Z" itemprop="datePublished">2015-02-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/02/17/4-Median-of-Two-Sorted-Arrays-md/">4-Median-of-Two-Sorted-Arrays.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="string">"""</span><br><span class="line">There are two sorted arrays nums1 and nums2 of size m and n respectively. </span><br><span class="line">Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).</span><br><span class="line">"""</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findMedianSortedArrays</span><span class="params">(self, nums1, nums2)</span>:</span></span><br><span class="line">        <span class="string">"""</span><br><span class="line">        :type nums1: List[int]</span><br><span class="line">        :type nums2: List[int]</span><br><span class="line">        :rtype: float</span><br><span class="line">        """</span></span><br><span class="line">        n = len(nums1) + len(nums2)</span><br><span class="line">        <span class="keyword">if</span> n % <span class="number">2</span> == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> self.findKth(nums1, nums2, n / <span class="number">2</span> + <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            smaller = self.findKth(nums1, nums2, n / <span class="number">2</span>)</span><br><span class="line">            bigger = self.findKth(nums1, nums2, n / <span class="number">2</span> + <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> (smaller + bigger) / <span class="number">2.0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findKth</span><span class="params">(self, A, B, k)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> len(A) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> B[k - <span class="number">1</span>]</span><br><span class="line">        <span class="keyword">if</span> len(B) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> A[k - <span class="number">1</span>]</span><br><span class="line">        <span class="keyword">if</span> k == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> min(A[<span class="number">0</span>], B[<span class="number">0</span>])</span><br><span class="line">        </span><br><span class="line">        a = A[k / <span class="number">2</span> - <span class="number">1</span>] <span class="keyword">if</span> len(A) &gt;= k / <span class="number">2</span> <span class="keyword">else</span> <span class="keyword">None</span></span><br><span class="line">        b = B[k / <span class="number">2</span> - <span class="number">1</span>] <span class="keyword">if</span> len(B) &gt;= k / <span class="number">2</span> <span class="keyword">else</span> <span class="keyword">None</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> b <span class="keyword">is</span> <span class="keyword">None</span> <span class="keyword">or</span> (a <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span> <span class="keyword">and</span> a &lt; b):</span><br><span class="line">            <span class="keyword">return</span> self.findKth(A[k / <span class="number">2</span>:], B, k - k / <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> self.findKth(A, B[k / <span class="number">2</span>:], k - k / <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/02/17/4-Median-of-Two-Sorted-Arrays-md/" data-id="cikqwu9ns000yuk6i1nonicqa" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
 
     </footer>
   </div>
@@ -188,318 +461,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/02/17/155-min-stack-md/" data-id="cikqokonh0000fxs6lbudb7tx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/02/17/155-min-stack-md/" data-id="cikqwu9o30016uk6isnnrajrl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-3-LongestSubstringWithoutRepeatingCharacters-md" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/02/15/3-LongestSubstringWithoutRepeatingCharacters-md/" class="article-date">
-  <time datetime="2015-02-15T07:32:54.000Z" itemprop="datePublished">2015-02-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/02/15/3-LongestSubstringWithoutRepeatingCharacters-md/">Longest Substrin gWithout Repeating Characters</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="string">"""</span><br><span class="line">Given a string, find the length of the longest substring without repeating characters. </span><br><span class="line">For example, the longest substring without repeating letters for "abcabcbb" is "abc", </span><br><span class="line">which the length is 3. For "bbbbb" the longest substring is "b", with the length of 1.</span><br><span class="line">"""</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        <span class="string">"""</span><br><span class="line">        :type s: str</span><br><span class="line">        :rtype: int</span><br><span class="line">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> s:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        character = set()</span><br><span class="line">        left_bound = <span class="number">0</span></span><br><span class="line">        longest = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)):</span><br><span class="line">            <span class="keyword">if</span> s[i] <span class="keyword">in</span> character:</span><br><span class="line">                <span class="keyword">while</span> left_bound &lt; i <span class="keyword">and</span> s[left_bound] != s[i]:</span><br><span class="line">                    character.remove(s[left_bound]);</span><br><span class="line">                    left_bound += <span class="number">1</span></span><br><span class="line">                left_bound += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                character.add(s[i])</span><br><span class="line">                longest = max(longest, i - left_bound + <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> longest</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/02/15/3-LongestSubstringWithoutRepeatingCharacters-md/" data-id="cikqokoos000qfxs6c2nssfch" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-2-Add-Two-Numbers" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/02/08/2-Add-Two-Numbers/" class="article-date">
-  <time datetime="2015-02-08T10:31:02.000Z" itemprop="datePublished">2015-02-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/02/08/2-Add-Two-Numbers/">Add Two Numbers</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>You are given two linked lists representing two non-negative numbers.<br>The digits are stored in reverse order and each of their nodes contain<br>a single digit. Add the two numbers and return it as a linked list.</p>
-<p>Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>Output: 7 -&gt; 0 -&gt; 8</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListNode</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        self.val = x</span><br><span class="line">        self.next = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">addTwoNumbers</span><span class="params">(self, l1, l2)</span>:</span></span><br><span class="line">        <span class="string">"""</span><br><span class="line">        :type l1: ListNode</span><br><span class="line">        :type l2: ListNode</span><br><span class="line">        :rtype: ListNode</span><br><span class="line">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> l1 <span class="keyword">and</span> <span class="keyword">not</span> l2:</span><br><span class="line">            <span class="keyword">print</span> <span class="string">'no'</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">        head = ListNode(<span class="number">0</span>)</span><br><span class="line">        point = head</span><br><span class="line">        carry = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> l1 <span class="keyword">and</span> l2:</span><br><span class="line">            sum = carry + l1.val + l2.val</span><br><span class="line">            point.next = ListNode(sum % <span class="number">10</span>)</span><br><span class="line">            carry = sum/<span class="number">10</span></span><br><span class="line">            l1 = l1.next</span><br><span class="line">            l2 = l2.next</span><br><span class="line">            point = point.next</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> l1:</span><br><span class="line">            sum = carry + l1.val</span><br><span class="line">            point.next = ListNode(sum % <span class="number">10</span>)</span><br><span class="line">            carry = sum / <span class="number">10</span></span><br><span class="line">            l1 = l1.next</span><br><span class="line">            point = point.next</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> l2:</span><br><span class="line">            sum = carry + l2.val</span><br><span class="line">            point.next = ListNode(sum % <span class="number">10</span>)</span><br><span class="line">            carry = sum / <span class="number">10</span></span><br><span class="line">            l2 = l2.next</span><br><span class="line">            point = point.next</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> carry != <span class="number">0</span>:</span><br><span class="line">            point.next = ListNode(carry)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> head.next</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/02/08/2-Add-Two-Numbers/" data-id="cikqokoov000sfxs66usmb43b" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-如何设计短网址" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/01/30/如何设计短网址/" class="article-date">
-  <time datetime="2015-01-30T10:29:07.000Z" itemprop="datePublished">2015-01-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/01/30/如何设计短网址/">如何设计短网址</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>问题</p>
-<p>新浪微博那种输入完全url转换为短url是怎么设计的？</p>
-<p>答</p>
-<p>发号策略，给每一个过来的长地址，发一个号即可，小型系统直接用mysql的自增索引就搞定了。<br>如果是大型应用，可以考虑各种分布式key-value系统做发号器。不停的自增就行了。第一个使用这个服务的人得到<br>的短地址是<a href="http://xx.xx/0" target="_blank" rel="external">http://xx.xx/0</a> 第二个是 <a href="http://xx.xx/1" target="_blank" rel="external">http://xx.xx/1</a> 第11个是 <a href="http://xx.xx/a" target="_blank" rel="external">http://xx.xx/a</a> 第依次往后，相当于实现了<br>一个62进制的自增字段即可。</p>
-<p>62进制如何用数据库或者KV存储来做？</p>
-<p>其实我们并不需要在存储中用62进制，用10进制就好了。比如第10000个长地址，我们给它的短地址对应的编号是9999，<br>我们通过存储自增拿到9999后，再做一个10进制到62进制的转换，转成62进制数即可。这个10～62进制转换，你完全都<br>可以自己实现。</p>
-<p>如何保证同一个长地址，每次转出来都是一样的短地址？</p>
-<p>上面的发号原理中，是不判断长地址是否已经转过的。也就是说用拿着百度首页地址来转，我给一个<a href="http://xx.xx/abc" target="_blank" rel="external">http://xx.xx/abc</a><br>过一段时间你再来转，我还会给你一个 <a href="http://xx.xx/xyz。这看起来挺不好的，但是不好在哪里呢？不好在不是一一对应，" target="_blank" rel="external">http://xx.xx/xyz。这看起来挺不好的，但是不好在哪里呢？不好在不是一一对应，</a><br>而一长对多短。这与我们完美主义的基因不符合，那么除此以外还有什么不对的地方？</p>
-<p>有人说它浪费空间，这是对的。同一个长地址，产生多条短地址记录，这明显是浪费空间的。那么我们如何避免空间浪费，<br>有人非常迅速的回答我，建立一个长对短的KV存储即可。嗯，听起来有理，但是。。。这个KV存储本身就是浪费大量空间。<br>所以我们是在用空间换空间，而且貌似是在用大空间换小空间。真的划算吗？这个问题要考虑一下。当然，也不是没有办法<br>解决，我们做不到真正的一一对应，那么打个折扣是不是可以搞定？这个问题的答案太多种，各有各招，我这就不说了。</p>
-<p>如何保证发号器的大并发高可用？</p>
-<p>上面设计看起来有一个单点，那就是发号器。如果做成分布式的，那么多节点要保持同步加1，多点同时写入，这个嘛，<br>以CAP理论看，是不可能真正做到的。其实这个问题的解决非常简单，我们可以退一步考虑，我们是否可以实现两个发号器，<br>一个发单号，一个发双号，这样就变单点为多点了？依次类推，我们可以实现1000个逻辑发号器，分别发尾号为0到999的号。<br>每发一个号，每个发号器加1000，而不是加1。这些发号器独立工作，互不干扰即可。而且在实现上，也可以先是逻辑的，<br>真的压力变大了，再拆分成独立的物理机器单元。1000个节点，估计对人类来说应该够用了。如果你真的还想更多，<br>理论上也是可以的。</p>
-<p>跳转用301还是302？</p>
-<p>这也是一个有意思的话题。首先当然考察一个候选人对301和302的理解。浏览器缓存机制的理解。然后是考察他的业务经验。<br>301是永久重定向，302是临时重定向。短地址一经生成就不会变化，所以用301是符合http语义的。同时对服务器压力也会<br>有一定减少。</p>
-<p>但是如果使用了301，我们就无法统计到短地址被点击的次数了。而这个点击次数是一个非常有意思的大数据分析数据源。<br>能够分析出的东西非常非常多。所以选择302虽然会增加服务器压力，但是我想是一个更好的选择。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/01/30/如何设计短网址/" data-id="cikqokony0006fxs6rbjexc86" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-CentOS用户相关" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/11/24/CentOS用户相关/" class="article-date">
-  <time datetime="2014-11-24T08:29:16.000Z" itemprop="datePublished">2014-11-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/11/24/CentOS用户相关/">CentOS用户相关</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cat</span> /etc/redhat-release   # 查看系统版本</span><br><span class="line"></span><br><span class="line">adduser <span class="keyword">test</span>     <span class="comment">// 添加用户</span></span><br><span class="line"></span><br><span class="line">passwd <span class="keyword">test</span>       <span class="comment">// 修改密码</span></span><br><span class="line"></span><br><span class="line">userdel <span class="keyword">test</span>       <span class="comment">// 删除用户test</span></span><br><span class="line"></span><br><span class="line">userdel -r <span class="keyword">test</span>    <span class="comment">// 删除用户及用户目录</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/11/24/CentOS用户相关/" data-id="cikqokook000lfxs6xae67smb" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-CentOS-python升级" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/11/04/CentOS-python升级/" class="article-date">
-  <time datetime="2014-11-04T09:43:53.000Z" itemprop="datePublished">2014-11-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/11/04/CentOS-python升级/">CentOS python升级</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>python升级</p>
-<p>预安装<br>yum install -y zlib-devel bzip2-devel openssl-devel xz-libs wget</p>
-<p>1.官网下载最新python安装包</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf Python-<span class="number">2.7</span><span class="number">.3</span>.tgz</span><br><span class="line">cd Python-<span class="number">2.7</span><span class="number">.3</span></span><br><span class="line">./configure --prefix=/usr/local</span><br><span class="line">make</span><br><span class="line">make altinstall</span><br><span class="line">python2<span class="number">.7</span> -V   <span class="comment">// 检查是否安装成功</span></span><br></pre></td></tr></table></figure>
-<p>2.创建一个链接来使系统默认python变为python2.7</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s <span class="regexp">/usr/</span>local<span class="regexp">/bin/</span>python2.<span class="number">7</span>  <span class="regexp">/usr/</span>bin<span class="regexp">/python</span></span><br></pre></td></tr></table></figure>
-<p>修复yum<br>yum无法运行修改/usr/bin/yum文件 #!/usr/bin/python  改为  #!/usr/bin/python2.6</p>
-<p>安装setuptools</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --<span class="keyword">no</span>-check-certificate http<span class="variable">s:</span>//pypi.<span class="keyword">python</span>.org/packages/<span class="keyword">source</span>/<span class="keyword">s</span>/setuptools/setuptools-<span class="number">1.4</span>.<span class="number">2</span>.tar.gz</span><br></pre></td></tr></table></figure>
-<p>安装 pip</p>
-<figure class="highlight"><figcaption><span>https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py | python2.7</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/11/04/CentOS-python升级/" data-id="cikqokooo000ofxs6llp689eh" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-理解epoll" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/11/03/理解epoll/" class="article-date">
-  <time datetime="2014-11-03T06:04:49.000Z" itemprop="datePublished">2014-11-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/11/03/理解epoll/">理解epoll</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>epoll是Linux内核为处理大批量文件描述符而作了改进的poll，是Linux下多路复用IO接口select/poll的增强版本，它能显著提高程序在大量并发连接中只有少量活跃的情况下的系统CPU利用率。</p>
-<h4 id="u4F18_u70B9"><a href="#u4F18_u70B9" class="headerlink" title="优点"></a>优点</h4><p>1: 支持一个进程打开大数目的socket描述符</p>
-<p>select 一个进程所打开的FD是有一定限制的，由FD_SETSIZE设置，默认值是1024<br>epoll则没有这个限制 具体数目cat /proc/sys/fs/file-max查看 与系统内存关系大</p>
-<p>2: IO效率不随FD数目增加而线性下降</p>
-<p>select/poll的弱点就是当拥有一个很大的socket集合，由于网络延时，任一时间只有部分的socket是“活跃”的，但是select/poll每次调用都会线性扫描全部的集合，导致效率呈现线性下降</p>
-<p>epoll只会对“活跃”的socket进行操作, 这是因为在内核实现中epoll是根据每个fd上面的callback函数实现的。那么，只有“活跃”的socket才会主动的去调用callback函数，其他idle状态socket则不会，在这点上, epoll实现了一个伪AIO</p>
-<p>3: 使用mmap加速内核与用户空间的消息传递, epoll是通过内核与用户空间mmap同一块内存实现的</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/11/03/理解epoll/" data-id="cikqokonr0003fxs6wwndyswu" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tornado/">tornado</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-python实现快排算法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/06/25/python实现快排算法/" class="article-date">
-  <time datetime="2014-06-25T03:28:02.000Z" itemprop="datePublished">2014-06-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/06/25/python实现快排算法/">python实现快排算法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>简单实现如下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quick_sort</span><span class="params">(input_list)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(input_list) &lt;= <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> input_list</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        pivot = input_list[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">return</span> quick_sort([x <span class="keyword">for</span> x <span class="keyword">in</span> input_list[<span class="number">1</span>:] <span class="keyword">if</span> x &lt; pivot]) + \</span><br><span class="line">            [pivot] + quick_sort([x <span class="keyword">for</span> x <span class="keyword">in</span> input_list[<span class="number">1</span>:] <span class="keyword">if</span> x &gt;= pivot])</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    quick_sort([<span class="number">4</span>, <span class="number">3</span>, <span class="number">9</span>, <span class="number">13</span>, <span class="number">34</span>, <span class="number">26</span>, <span class="number">10</span>, <span class="number">2</span>, <span class="number">4</span>])</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/06/25/python实现快排算法/" data-id="cikqokoo4000bfxs69pxsdxtg" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
 
     </footer>
   </div>
@@ -524,7 +489,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tornado/">tornado</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">4</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tornado/">tornado</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">11</span></li></ul>
     </div>
   </div>
 
@@ -542,7 +507,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -554,6 +519,10 @@
       <ul>
         
           <li>
+            <a href="/2016/02/17/33-search-in-rotated-sorted-array-md/">33-search-in-rotated-sorted-array.md</a>
+          </li>
+        
+          <li>
             <a href="/2015/07/24/git开发流程/">一个在用的git开发流程</a>
           </li>
         
@@ -562,15 +531,11 @@
           </li>
         
           <li>
-            <a href="/2015/02/17/155-min-stack-md/">min stack</a>
+            <a href="/2015/03/21/10-regular-expression-matching-md/">10-regular-expression-matching.md</a>
           </li>
         
           <li>
-            <a href="/2015/02/15/3-LongestSubstringWithoutRepeatingCharacters-md/">Longest Substrin gWithout Repeating Characters</a>
-          </li>
-        
-          <li>
-            <a href="/2015/02/08/2-Add-Two-Numbers/">Add Two Numbers</a>
+            <a href="/2015/03/20/9-palindrome-number-md/">9-palindrome-number.md</a>
           </li>
         
       </ul>
